@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <p>Deposit: <input type="number" id="depositField"></p>
+    <p>Interest rate: <input type="number" id="interestRateField"></p>
+    <p>Years: <input type="number" id="yearsField"></p>
+    <input type="button" value="Calculate" id="calculateButton">
+
+    <p>Future Value: <input type="number" id="futureValueField"></p>
+    <p>Total Interest Earned: <input type="number" id="totalInterestField"></p>
+
+    <script src="scripts/compoundInterest.js"></script>
+
+    <script>
+        window.onload = handleOnload;
+    </script>
+    
+</body>
+</html>
