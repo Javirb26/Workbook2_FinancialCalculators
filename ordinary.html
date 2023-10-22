@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <p>Payment amount: <input type="number" id="paymentField"></p>
+    <p>Interest rate: <input type="number" id="interestRateField"></p>
+    <p>Number of years: <input type="number" id="numberOfYearsField"></p>
+    <p>Payment interval = Monthly</p>
+    <input type="button" value="Calculate" id="calculateButton">
+    <p>Present Value<input type="number" id="presentValueField"></p>
+
+    <script src="scripts/ordinary.js"></script>
+
+    <script>
+        window.onload = handleOnload;
+    </script>
+</body>
+</html>
