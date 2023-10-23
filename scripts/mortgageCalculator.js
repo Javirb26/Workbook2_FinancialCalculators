@@ -1,42 +1,41 @@
 
 
 function handleOnload() {
+    // grab the calculate button element by ID
     const calculateMortgageEl = document.getElementById("calculateButton");
 
+    // attach the calculateMortgageElOnClick function as an onclick event for the button
     calculateMortgageEl.onclick = calculateMortgageElOnclick;
 }
 
-// mortgage calculator
+// function calculates monthly mortgage payments
 function calculateMortgageElOnclick() {
 
-    // Loan amount
-    const numberOneInputEl = document.getElementById('number1Field');
-    // Interest rate per year
-    const numberTwoInputEl = document.getElementById('number2Field');
-    // Loan length
-    const numberThreeInputEl = document.getElementById('number3Field');
-    // blank answer inputs
+    // Get input elements for loan amount, interest rate, loan length, and result inputs.
+    
+    const loanAmountEl = document.getElementById('number1Field');
+    const interestRateEl = document.getElementById('number2Field');
+    const loanLengthEl = document.getElementById('number3Field');
+    const result1El = document.getElementById('answer1Field');
+    const result2El = document.getElementById('answer2Field');
 
-        // Monthly payment
-        const answerOneInputEl = document.getElementById('answer1Field');
-        // Total interest
-        const answerTwoInputEl = document.getElementById('answer2Field');
+    // Take values from the input fields/ what is to be typed
 
-    // CALCULATION 
-    // PRINCIPAL LOAN AMOUNT
-    const numberOne = Number(numberOneInputEl.value); // fine as total #
+        // PRINCIPAL LOAN AMOUNT
+        const loanAmount = Number(loanAmountEl.value); // fine as total #
+        // Annual interest rate converted to decimals =  in YEARS but we need change to MONTHS
+        const interestRate = Number(interestRateEl.value) / 100 / 12; // need to convert yr --> month: 7.625 / 100 = 0.07625 / 12 = .00635417
+        // Loan length = Year but we need to change to MONTHS
+        const loanLength = Number(loanLengthEl.value) * 12; // need to convert yrs --> months: # * 12 = 180
 
-    // interest rate =  in YEARS but we need change to MONTHS
-    const numberTwo = Number(numberTwoInputEl.value) / 100 / 12; // need to convert yr --> month: 7.625 / 100 = 0.07625 / 12 = .00635417
+    // CALCULATIONS
 
-    // Loan length = Year but we need to change to MONTHS
-    const numberThree = Number(numberThreeInputEl.value) * 12; // need to convert yrs --> months: # * 12 = 180
+    // Calculate the monthly mortgage payment 
+    const monthlyPayment = (loanAmount * interestRate) / (1 - Math.pow(1 + interestRate, -loanLength));
+    result1El.value = monthlyPayment.toFixed(2);
 
-
-    const monthlyPayment = (numberOne * numberTwo) / (1 - Math.pow(1 + numberTwo, -numberThree));
-    answerOneInputEl.value = monthlyPayment.toFixed(2);
-
-    const totalInterest = (monthlyPayment * numberThree) - numberOne;
-    answerTwoInputEl.value = totalInterest.toFixed(2);
+    // Calculate the total interest paid over the life of the loan.
+    const totalInterest = (monthlyPayment * loanLength) - loanAmount;
+    result2El.value = totalInterest.toFixed(2);
 
 }
