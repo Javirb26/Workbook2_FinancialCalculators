@@ -1,6 +1,6 @@
 # Financial Calculator
 
-This respository features three financial calculators built using HTML, bootstrap and JavaScript.
+This respository features three financial calculators. Each calculator serves a specific purpose related to their respective financial areas.
 
 ## Calculators
 
